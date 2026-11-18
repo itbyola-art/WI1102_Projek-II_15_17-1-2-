@@ -1,0 +1,241 @@
+nama = ["Bijih Kadar Rendah", "Bijih Kadar Menengah",
+        "Bijih Kadar Tinggi"]
+
+stok = [0, 0, 0]
+total_kadar = [0, 0, 0]
+kapasitas = 0
+
+# 1. INPUT DATA
+def input_data(prompt, minimum=0):
+    while True:
+        try:
+            nilai = float(input(prompt))
+            if nilai >= minimum:
+                return nilai
+            else: 
+                print("Nilai tidak boleh kurang dari", minimum)
+        except ValueError:
+            print("Masukkan angka yang benar!")
+
+# 2. MENAMPILKAN STOK
+def tampilkan_stok():
+    print("\n===== DATA STOK STOCKPILE =====")
+    total = 0
+    for i in range(3):
+        if stok[i] > 0:
+            kadar = total_kadar[i] / stok[i]
+        else:
+            kadar = 0
+        print(nama[i])
+        print("Jumlah stok :", stok[i], "ton")
+        print("Kadar rata-rata :", kadar, "%")
+        total = total + stok[i]
+    print("------------------------------")
+    print("Total stok :", total, "ton")
+
+# 3. MEMPERBARUI STOK
+def perbarui_stok(indeks, jumlah, mode, kadar=0):
+    if mode == "masuk":
+        stok[indeks] = stok[indeks] + jumlah
+        total_kadar[indeks] = total_kadar[indeks] + jumlah * kadar
+    elif mode == "keluar":
+        if stok[indeks] > 0:
+            kadar_lama = total_kadar[indeks] / stok[indeks]
+            stok[indeks] = stok[indeks] - jumlah
+            total_kadar[indeks] = total_kadar[indeks] - jumlah * kadar_lama
+            if stok[indeks] < 0.000001:
+                stok[indeks] = 0
+                total_kadar[indeks] = 0
+
+# 4. MENERIMA MATERIAL
+def terima_material():
+    global kapasitas
+    if kapasitas == 0:
+        kapasitas = input_data("Masukkan kapasitas stockpile (ton): ", 1)
+    tampilkan_stok()
+    print("\nPilih jenis material:")
+    for i in range(3):
+        print(i + 1, ".", nama[i])
+    pilihan = int(input_data("Pilihan: ", 1)) - 1
+    if pilihan < 0 or pilihan > 2:
+        print("Pilihan tidak tersedia!")
+        return
+    jumlah = input_data("Jumlah material masuk (ton): ", 0)
+    kadar = input_data("Kadar material (%): ", 0)
+    total = stok[0] + stok[1] + stok[2]
+    ruang = kapasitas - total
+    if ruang < 0:
+        ruang = 0
+    diterima = min(jumlah, ruang)
+    ditolak = jumlah - diterima
+    perbarui_stok(pilihan, diterima, "masuk", kadar)
+
+    print("\nMaterial diterima :", diterima, "ton")
+    print("Material dialihkan :", ditolak, "ton")
+
+# 5. MENGHITUNG KAPASITAS
+def hitung_kapasitas():
+    global kapasitas
+    if kapasitas == 0:
+        kapasitas = input_data("Masukkan kapasitas stockpile (ton): ", 1)
+    total = stok[0] + stok[1] + stok[2]
+    sisa = kapasitas - total
+    persentase = total / kapasitas * 100
+
+    if sisa < 0:
+        sisa = 0
+
+    print("\n===== KONDISI KAPASITAS =====")
+    print("Kapasitas maksimum :", kapasitas, "ton")
+    print("Stok saat ini :", total, "ton")
+    print("Sisa kapasitas :", sisa, "ton")
+    print("Persentase terisi :", persentase, "%")
+
+    if persentase >= 100:
+        print("Status: PENUH")
+    elif persentase >= 90:
+        print("Status: HAMPIR PENUH")
+    elif persentase >= 70:
+        print("Status: PERINGATAN")
+    else:
+        print("Status: AMAN")
+
+# 6. MENGHITUNG KUALITAS
+def hitung_kualitas():
+    total = stok[0] + stok[1] + stok[2]
+    if total == 0:
+        return 0
+    jumlah_kadar = total_kadar[0] + total_kadar[1] + total_kadar[2]
+    kualitas = jumlah_kadar / total
+    return kualitas
+
+# 7. OPTIMASI BLENDING
+def optimasi_blending():
+    tampilkan_stok()
+    print("\nPilih dua jenis material:")
+    pertama = int(input_data("Material pertama (1-3): ", 1)) - 1
+    kedua = int(input_data("Material kedua (1-3): ", 1)) - 1
+    if pertama < 0 or pertama > 2 or kedua < 0 or kedua > 2:
+        print("Pilihan material tidak tersedia!")
+        return
+    if pertama == kedua:
+        print("Pilih dua material yang berbeda!")
+        return
+    if stok[pertama] == 0 or stok[kedua] == 0:
+        print("Stok salah satu material kosong!")
+        return
+    kadar1 = total_kadar[pertama] / stok[pertama]
+    kadar2 = total_kadar[kedua] / stok[kedua]
+    print("Kadar material pertama:", kadar1, "%")
+    print("Kadar material kedua:", kadar2, "%")
+
+    jumlah = input_data("Jumlah campuran yang diinginkan (ton): ", 0)
+    target = input_data("Target kadar campuran (%): ", 0)
+
+    kadar_rendah = min(kadar1, kadar2)
+    kadar_tinggi = max(kadar1, kadar2)
+
+    if target < kadar_rendah or target > kadar_tinggi:
+        print("Target kadar tidak dapat dicapai!")
+        return
+    if kadar_tinggi == kadar_rendah:
+        print("Kedua material memiliki kadar yang sama!")
+        return
+
+    jumlah_tinggi = jumlah * (target - kadar_rendah) / (kadar_tinggi - kadar_rendah)
+    jumlah_rendah = jumlah - jumlah_tinggi
+
+    if kadar1 == kadar_tinggi:
+        kebutuhan1 = jumlah_tinggi
+        kebutuhan2 = jumlah_rendah
+    else:
+        kebutuhan1 = jumlah_rendah
+        kebutuhan2 = jumlah_tinggi
+    if kebutuhan1 > stok[pertama] or kebutuhan2 > stok[kedua]:
+        print("Stok tidak mencukupi untuk blending!")
+        return
+
+    print("\n===== HASIL BLENDING =====")
+    print(nama[pertama], ":", kebutuhan1, "ton")
+    print(nama[kedua], ":", kebutuhan2, "ton")
+    print("Total campuran :", jumlah, "ton")
+    print("Target kadar :", target, "%")
+    print("Catatan: Perhitungan ini merupakan rencana blending.")
+
+# 8. MERENCANAKAN PENGIRIMAN
+def rencanakan_pengiriman():
+    tampilkan_stok()
+    pilihan = int(input_data("Pilih material (1-3): ", 1)) - 1
+    if pilihan < 0 or pilihan > 2:
+        print("Pilihan tidak tersedia!")
+        return
+
+    tujuan = input("Masukkan tujuan pengiriman: ")
+    permintaan = input_data("Jumlah permintaan (ton): ", 0)
+    jarak = input_data("Jarak pengiriman (km): ", 0)
+    tarif = input_data("Biaya angkut per ton-km (Rp): ", 0)
+    dikirim = min(permintaan, stok[pilihan])
+    kekurangan = permintaan - dikirim
+
+    biaya = dikirim * jarak * tarif
+
+    perbarui_stok(pilihan, dikirim, "keluar")
+
+    print("\n===== HASIL PENGIRIMAN =====")
+    print("Tujuan :", tujuan)
+    print("Jumlah dikirim :", dikirim, "ton")
+    print("Kekurangan :", kekurangan, "ton")
+    print("Total biaya : Rp", biaya)
+
+# 9. MEMBUAT LAPORAN
+def buat_laporan():
+    print("\n========== LAPORAN STOCKPILE ==========")
+    tampilkan_stok()
+    total = stok[0] + stok[1] + stok[2]
+
+    if kapasitas > 0:
+        persentase = total / kapasitas * 100
+    else:
+        persentase = 0
+
+    kualitas = hitung_kualitas()
+    print("\nKapasitas maksimum :", kapasitas, "ton")
+    print("Persentase terisi :", persentase, "%")
+    print("Kualitas rata-rata :", kualitas, "%")
+    print("=======================================")
+
+# 10. PROGRAM UTAMA
+def main():
+    while True:
+        print("\n===== SISTEM MANAJEMEN STOCKPILE =====")
+        print("1. Tampilkan stok")
+        print("2. Terima material")
+        print("3. Hitung kapasitas")
+        print("4. Hitung kualitas")
+        print("5. Optimasi blending")
+        print("6. Rencanakan pengiriman")
+        print("7. Buat laporan")
+        print("8. Keluar")
+        pilihan = input("Pilih menu: ")
+
+        if pilihan == "1":
+            tampilkan_stok()
+        elif pilihan == "2":
+            terima_material()
+        elif pilihan == "3":
+            hitung_kapasitas()
+        elif pilihan == "4":
+            print("Kualitas rata-rata:", hitung_kualitas(), "%")
+        elif pilihan == "5":
+            optimasi_blending()
+        elif pilihan == "6":
+            rencanakan_pengiriman()
+        elif pilihan == "7":
+            buat_laporan()
+        elif pilihan == "8":
+            print("Program selesai.")
+            break
+        else:
+            print("Pilihan tidak tersedia!")
+
+main()
