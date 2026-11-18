@@ -1,0 +1,276 @@
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 2
+Masukkan kapasitas stockpile (ton): 1000
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+Bijih Kadar Menengah
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+Bijih Kadar Tinggi
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+------------------------------
+Total stok : 0 ton
+
+Pilih jenis material:
+1 . Bijih Kadar Rendah
+2 . Bijih Kadar Menengah
+3 . Bijih Kadar Tinggi
+Pilihan: 1
+Jumlah material masuk (ton): 300
+Kadar material (%): 20
+
+Material diterima : 300.0 ton
+Material dialihkan : 0.0 ton
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 2
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+Bijih Kadar Tinggi
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+------------------------------
+Total stok : 300.0 ton
+
+Pilih jenis material:
+1 . Bijih Kadar Rendah
+2 . Bijih Kadar Menengah
+3 . Bijih Kadar Tinggi
+Pilihan: 2
+Jumlah material masuk (ton): 400
+Kadar material (%): 45
+
+Material diterima : 400.0 ton
+Material dialihkan : 0.0 ton
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 2
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 400.0 ton
+Kadar rata-rata : 45.0 %
+Bijih Kadar Tinggi
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+------------------------------
+Total stok : 700.0 ton
+
+Pilih jenis material:
+1 . Bijih Kadar Rendah
+2 . Bijih Kadar Menengah
+3 . Bijih Kadar Tinggi
+Pilihan: 3
+Jumlah material masuk (ton): 500
+Kadar material (%): 70
+
+Material diterima : 300.0 ton
+Material dialihkan : 200.0 ton
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 1
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 400.0 ton
+Kadar rata-rata : 45.0 %
+Bijih Kadar Tinggi
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 70.0 %
+------------------------------
+Total stok : 1000.0 ton
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 3
+
+===== KONDISI KAPASITAS =====
+Kapasitas maksimum : 1000.0 ton
+Stok saat ini : 1000.0 ton
+Sisa kapasitas : 0.0 ton
+Persentase terisi : 100.0 %
+Status: PENUH
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 4
+Kualitas rata-rata: 45.0 %
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 5
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 400.0 ton
+Kadar rata-rata : 45.0 %
+Bijih Kadar Tinggi
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 70.0 %
+------------------------------
+Total stok : 1000.0 ton
+
+Pilih dua jenis material:
+Material pertama (1-3): 1
+Material kedua (1-3): 3
+Kadar material pertama: 20.0 %
+Kadar material kedua: 70.0 %
+Jumlah campuran yang diinginkan (ton): 200
+Target kadar campuran (%): 50
+
+===== HASIL BLENDING =====
+Bijih Kadar Rendah : 80.0 ton
+Bijih Kadar Tinggi : 120.0 ton
+Total campuran : 200.0 ton
+Target kadar : 50.0 %
+Catatan: Perhitungan ini merupakan rencana blending.
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 6
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 400.0 ton
+Kadar rata-rata : 45.0 %
+Bijih Kadar Tinggi
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 70.0 %
+------------------------------
+Total stok : 1000.0 ton
+Pilih material (1-3): 2
+Masukkan tujuan pengiriman: Pabrik Pengolahan Morowali
+Jumlah permintaan (ton): 450
+Jarak pengiriman (km): 120
+Biaya angkut per ton-km (Rp): 2500
+
+===== HASIL PENGIRIMAN =====
+Tujuan : Pabrik Pengolahan Morowali
+Jumlah dikirim : 400.0 ton
+Kekurangan : 50.0 ton
+Total biaya : Rp 120000000.0
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 7
+
+========== LAPORAN STOCKPILE ==========
+
+===== DATA STOK STOCKPILE =====
+Bijih Kadar Rendah
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 20.0 %
+Bijih Kadar Menengah
+Jumlah stok : 0 ton
+Kadar rata-rata : 0 %
+Bijih Kadar Tinggi
+Jumlah stok : 300.0 ton
+Kadar rata-rata : 70.0 %
+------------------------------
+Total stok : 600.0 ton
+
+Kapasitas maksimum : 1000.0 ton
+Persentase terisi : 60.0 %
+Kualitas rata-rata : 45.0 %
+=======================================
+
+===== SISTEM MANAJEMEN STOCKPILE =====
+1. Tampilkan stok
+2. Terima material
+3. Hitung kapasitas
+4. Hitung kualitas
+5. Optimasi blending
+6. Rencanakan pengiriman
+7. Buat laporan
+8. Keluar
+Pilih menu: 8
+Program selesai.
